@@ -1,0 +1,8 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: 121.4.58.44:8848
+        file-extension: yaml
+  application:
+    name: spring-cloud-alibaba-nacos
