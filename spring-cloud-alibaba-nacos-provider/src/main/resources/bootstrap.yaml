@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 121.4.58.44:8848
+        cluster-name: provider1
+  application:
+    name: spring-cloud-alibaba-nacos-provider
+server:
+  port: 9090

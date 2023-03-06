@@ -8,7 +8,7 @@ import lombok.Data;
  */
 @Data
 public class UserModel {
-    private Integer id;
-    private String userName;
-    private String phone;
+	private Integer id;
+	private String userName;
+	private String phone;
 }

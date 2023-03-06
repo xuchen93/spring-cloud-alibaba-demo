@@ -1,0 +1,4 @@
+spring-cloud-alibaba-nacos-config
+xuchen:
+  config:
+    key1: value1
