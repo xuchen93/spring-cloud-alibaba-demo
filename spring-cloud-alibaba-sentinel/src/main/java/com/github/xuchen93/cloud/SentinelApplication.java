@@ -1,4 +1,4 @@
-package com.github.xuchen93.cloud.sentinel;
+package com.github.xuchen93.cloud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

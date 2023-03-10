@@ -3,7 +3,6 @@ package com.github.xuchen93.cloud.util;
 import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.HttpRequest;
-import cn.hutool.http.HttpResponse;
 import cn.hutool.http.Method;
 import com.github.xuchen93.cloud.model.PackHttpRequest;
 import lombok.Data;
@@ -21,6 +20,8 @@ public final class HttpPackUtil {
 	public static String token = null;
 	public static List<HttpCookie> cookieList = new LinkedList<>();
 	public static Map<String, String> headerMap = new LinkedHashMap<>();
+	public static boolean logEnable = true;
+	public static boolean costEnable = true;
 
 	public static HttpRequest createRequest(Method method, String url) {
 		if (url.startsWith("/")) {
@@ -31,18 +32,26 @@ public final class HttpPackUtil {
 	}
 
 	public static HttpRequest createGet(String url) {
+		return createGet(null, url);
+	}
+
+	public static HttpRequest createGet(String id, String url) {
 		if (url.startsWith("/")) {
 			url = url.substring(1);
 		}
-		HttpRequest request = new PackHttpRequest(localUrl + url).method(Method.GET);
+		HttpRequest request = new PackHttpRequest(id, localUrl + url).method(Method.GET);
 		return doCustomer(request);
 	}
 
 	public static HttpRequest createPost(String url) {
+		return createPost(null, url);
+	}
+
+	public static HttpRequest createPost(String id, String url) {
 		if (url.startsWith("/")) {
 			url = url.substring(1);
 		}
-		HttpRequest request = new PackHttpRequest(localUrl + url).method(Method.POST);
+		HttpRequest request = new PackHttpRequest(id, localUrl + url).method(Method.POST);
 		return doCustomer(request);
 	}
 
@@ -53,8 +62,8 @@ public final class HttpPackUtil {
 		return request;
 	}
 
-	public static void setPort(int port){
-		HttpPackUtil.localUrl = StrUtil.format("http://localhost:{}/",port);
+	public static void setPort(int port) {
+		HttpPackUtil.localUrl = StrUtil.format("http://localhost:{}/", port);
 	}
 
 	private static void setCookie(HttpRequest request) {

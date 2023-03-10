@@ -1,4 +1,4 @@
-package com.github.xuchen93.cloud.nacos;
+package com.github.xuchen93.cloud.nacos.controller;
 
 import com.github.xuchen93.cloud.model.R;
 import lombok.extern.slf4j.Slf4j;

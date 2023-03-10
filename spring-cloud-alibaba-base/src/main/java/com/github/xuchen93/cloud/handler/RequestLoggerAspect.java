@@ -9,6 +9,8 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -24,18 +26,11 @@ import java.util.Map;
 @Aspect
 @Slf4j
 @Component
+@ConditionalOnExpression("${demo.log.enable-stdout:true}")
 public class RequestLoggerAspect {
 
 	public RequestLoggerAspect() {
 		log.info("注入【请求日志】拦截");
-	}
-
-	private static String getJsonParams(Map<String, String[]> map) {
-		Map<String, List<String>> paramsMap = new HashMap<>();
-		for (Map.Entry<String, String[]> entry : map.entrySet()) {
-			paramsMap.put(entry.getKey(), CollUtil.newArrayList(entry.getValue()));
-		}
-		return JSONUtil.toJsonStr(paramsMap);
 	}
 
 	@Pointcut("execution(* *..controller..*.*(..))")
@@ -63,6 +58,14 @@ public class RequestLoggerAspect {
 		Object result = joinPoint.proceed();
 		log.info("耗时：[{}ms]；返回：[{}]", System.currentTimeMillis() - millis,JSONUtil.toJsonStr(result));
 		return result;
+	}
+
+	private static String getJsonParams(Map<String, String[]> map) {
+		Map<String, List<String>> paramsMap = new HashMap<>();
+		for (Map.Entry<String, String[]> entry : map.entrySet()) {
+			paramsMap.put(entry.getKey(), CollUtil.newArrayList(entry.getValue()));
+		}
+		return JSONUtil.toJsonStr(paramsMap);
 	}
 }
 

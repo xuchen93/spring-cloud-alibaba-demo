@@ -1,1 +1,7 @@
-docker run -p 8848:8848 -p 9848:9848 -p 9849:9849 -e JVM_XMS=256M -e JVM_XMX=256M -e MODE=standalone -v ${PWD}/logs:/home/nacos/logs -v ${PWD}/init.d/custom.properties:/home/nacos/init.d/custom.properties --name nacos -e TZ=Asia/Shanghai  -d nacos/nacos-server:v2.1.0
+docker run -p 8848:8848 -p 9848:9848 -p 9849:9849 -e JVM_XMS=256M -e JVM_XMX=256M -e MODE=standalone \
+-e SPRING_DATASOURCE_PLATFORM=mysql \
+-e MYSQL_SERVICE_HOST=localhost \
+-e MYSQL_SERVICE_PORT=3310 \
+-e MYSQL_SERVICE_USER=nacos \
+-e MYSQL_SERVICE_PASSWORD=123456 \
+-e MYSQL_SERVICE_DB_NAME=nacos -v ${PWD}/logs:/home/nacos/logs --name nacos -e TZ=Asia/Shanghai  -d nacos/nacos-server:v2.1.0

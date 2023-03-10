@@ -1,4 +1,4 @@
-package com.github.xuchen93.cloud.nacos;
+package com.github.xuchen93.cloud.nacos.controller;
 
 import com.github.xuchen93.cloud.model.R;
 import com.github.xuchen93.cloud.nacos.service.ProviderRemote;
