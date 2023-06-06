@@ -15,17 +15,18 @@ public class FlowRuleControllerTest extends BaseControllerTest {
 
 
 	public static void main(String[] args) {
-		int count = 100;
+		int count = 1;
 		doBefore(count);
+		HttpPackUtil.headerMap.put("origin","testApp1");
 		for (int i = 0; i < 1; i++) {
 //			qpsRefuse(count);
 //			qpsWarmUp(count);
 //			qpsWarmUpRateLimit(count);
-			qpsRateLimit(count);
+//			qpsRateLimit(count);
+			qpsByApp(count);
 			ThreadUtil.sleep(1000);
 			System.out.println("==============");
 		}
-//		qpsRateLimit(10);
 		doAfter();
 	}
 
@@ -64,6 +65,18 @@ public class FlowRuleControllerTest extends BaseControllerTest {
 	}
 
 	public static void qpsRateLimit(int count) {
+		String methodName = CommonUtil.getCurrentMethodName(2);
+		for (int i = 1; i <= count; i++) {
+			int finalI = i;
+			service.execute(() -> {
+				HttpResponse response = HttpPackUtil.createGet(methodName + "-" + finalI, methodName).execute();
+				log.info("方法【{}】第【{}】次执行请求，返回：{}", methodName, finalI, response.body());
+			});
+		}
+	}
+
+	public static void qpsByApp(int count) {
+
 		String methodName = CommonUtil.getCurrentMethodName(2);
 		for (int i = 1; i <= count; i++) {
 			int finalI = i;

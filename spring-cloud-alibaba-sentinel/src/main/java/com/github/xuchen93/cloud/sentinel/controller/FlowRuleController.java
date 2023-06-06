@@ -1,6 +1,7 @@
 package com.github.xuchen93.cloud.sentinel.controller;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.github.xuchen93.cloud.annotation.SentinelFrom;
 import com.github.xuchen93.cloud.model.R;
 import com.github.xuchen93.cloud.util.CommonUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -54,6 +55,17 @@ public class FlowRuleController {
 	@GetMapping("/qpsRateLimit")
 	@SentinelResource("qpsRateLimit")
 	public R<String> qpsRateLimit() {
+		String methodName = CommonUtil.getCurrentMethodName(2);
+		AtomicInteger atomicInteger = counterMap.computeIfAbsent(methodName, s -> new AtomicInteger());
+		int count = atomicInteger.incrementAndGet();
+		log.info("【{}】第【{}】次接到请求", methodName, count);
+		return R.success("" + count);
+	}
+
+	@GetMapping("/qpsByApp")
+	@SentinelFrom
+	@SentinelResource("qpsByApp")
+	public R<String> qpsByApp() {
 		String methodName = CommonUtil.getCurrentMethodName(2);
 		AtomicInteger atomicInteger = counterMap.computeIfAbsent(methodName, s -> new AtomicInteger());
 		int count = atomicInteger.incrementAndGet();

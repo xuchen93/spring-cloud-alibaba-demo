@@ -57,6 +57,20 @@ public class GenerateSentinelConfig {
 					setCount(10);
 					setMaxQueueingTimeMs(200000);
 				}}
+				,new FlowRule(){{
+					setResource("qpsByApp");
+					setGrade(RuleConstant.FLOW_GRADE_QPS);
+					setControlBehavior(RuleConstant.CONTROL_BEHAVIOR_DEFAULT);
+					setCount(10);
+					setLimitApp("testApp1");
+				}}
+				,new FlowRule(){{
+					setResource("qpsByApp");
+					setGrade(RuleConstant.FLOW_GRADE_QPS);
+					setControlBehavior(RuleConstant.CONTROL_BEHAVIOR_DEFAULT);
+					setCount(100);
+					setLimitApp("testApp2");
+				}}
 		);
 		NacosUtil.push("spring-cloud-alibaba-sentinel-flow", JSONUtil.toJsonPrettyStr(list));
 		ThreadUtil.sleep(200);
