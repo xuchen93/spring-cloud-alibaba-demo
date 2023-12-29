@@ -21,7 +21,7 @@ import java.util.Set;
 public class GenerateSentinelConfig {
 
 	public static void main(String[] args) {
-		NacosUtil.initConfig("121.4.58.44:8848");
+		NacosUtil.initConfig("124.220.50.39:8848");
 		pushFlowRule();
 //		pushDegradeRule();
 

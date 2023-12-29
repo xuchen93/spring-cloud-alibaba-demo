@@ -1,0 +1,53 @@
+spring:
+  application:
+    name: spring-cloud-alibaba-seata-service2
+  cloud:
+    nacos:
+      discovery:
+        group: SEATA_GROUP
+        server-addr: 124.220.50.39:8848
+        namespace: 426b74f2-7284-4d25-8828-0cc75e3013c2
+  jackson:
+    time-zone: GMT+8
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+  datasource:
+    url: jdbc:mysql://124.220.50.39:3310/s2?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: seata
+    password: seata
+    hikari:
+      connection-timeout: 500
+      maximum-pool-size: 20
+      minimum-idle: 10
+server:
+  port: 9101
+seata:
+  application-id: seata-server
+  registry:
+    type: nacos
+    nacos:
+      group: ${spring.cloud.nacos.discovery.group}
+      server-addr: ${spring.cloud.nacos.discovery.server-addr}
+      namespace: ${spring.cloud.nacos.discovery.namespace}
+      application: seata-server
+      username: nacos
+      password: nacos
+      cluster: default
+  enable-auto-data-source-proxy: true
+  tx-service-group: default_tx_group
+  config:
+    type: nacos
+    nacos:
+      server-addr: ${spring.cloud.nacos.discovery.server-addr}
+      group: ${spring.cloud.nacos.discovery.group}
+      namespace: ${spring.cloud.nacos.discovery.namespace}
+  service:
+    vgroup-mapping:
+      tx-service-group: ${seata.tx-service-group}
+    disable-global-transaction: false
+  client:
+    rm:
+      report-success-enable: true
+      report-retry-count: 5

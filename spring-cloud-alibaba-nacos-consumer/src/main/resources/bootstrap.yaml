@@ -2,7 +2,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 121.4.58.44:8848
+        server-addr: 124.220.50.39:8848
         cluster-name: consumer1
   application:
     name: spring-cloud-alibaba-nacos-consumer

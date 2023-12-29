@@ -26,11 +26,11 @@ class NacosMainTests {
 
 	@SneakyThrows
 	public static void main(String[] args) {
-//		Properties properties = new Properties();
-//		properties.put(PropertyKeyConst.SERVER_ADDR, "121.4.58.44:8848");
-//		ConfigService service = NacosFactory.createConfigService(properties);
-//		String config = service.getConfig("spring-cloud-alibaba-nacos", "DEFAULT_GROUP", 5000);
-//		System.out.println(config);
+		Properties properties = new Properties();
+		properties.put(PropertyKeyConst.SERVER_ADDR, "124.220.50.39:8848");
+		ConfigService service = NacosFactory.createConfigService(properties);
+		String config = service.getConfig("spring-cloud-alibaba-sentinel-flow", "DEFAULT_GROUP", 5000);
+		System.out.println(config);
 
 	}
 }

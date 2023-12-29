@@ -13,12 +13,12 @@ spring:
       datasource:
         da1:
           nacos:
-            server-addr: 121.4.58.44:8848
+            server-addr: 124.220.50.39:8848
             data-id: spring-cloud-alibaba-sentinel-flow
             rule-type: flow
         da2:
           nacos:
-            server-addr: 121.4.58.44:8848
+            server-addr: 124.220.50.39:8848
             data-id: spring-cloud-alibaba-sentinel-degrade
             rule-type: degrade
 server:

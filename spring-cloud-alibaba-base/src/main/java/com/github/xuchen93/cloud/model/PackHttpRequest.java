@@ -31,7 +31,11 @@ public class PackHttpRequest extends HttpRequest {
 		long timeMillis = System.currentTimeMillis();
 		HttpResponse response = super.execute();
 		if (HttpPackUtil.costEnable) {
-			log.info("请求id[" + id + "] 耗时(ms)：" + (System.currentTimeMillis() - timeMillis));
+			if (id == null){
+				log.info("请求耗时(ms)：" + (System.currentTimeMillis() - timeMillis));
+			} else {
+				log.info("请求id[" + id + "] 耗时(ms)：" + (System.currentTimeMillis() - timeMillis));
+			}
 		}
 		return response;
 	}

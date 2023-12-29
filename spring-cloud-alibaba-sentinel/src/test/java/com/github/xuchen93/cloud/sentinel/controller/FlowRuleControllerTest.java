@@ -18,13 +18,13 @@ public class FlowRuleControllerTest extends BaseControllerTest {
 		int count = 1;
 		doBefore(count);
 		HttpPackUtil.headerMap.put("origin","testApp1");
-		for (int i = 0; i < 1; i++) {
-//			qpsRefuse(count);
+		for (int i = 0; i < 1000; i++) {
+			qpsRefuse(count);
 //			qpsWarmUp(count);
 //			qpsWarmUpRateLimit(count);
 //			qpsRateLimit(count);
-			qpsByApp(count);
-			ThreadUtil.sleep(1000);
+//			qpsByApp(count);
+//			ThreadUtil.sleep(1000);
 			System.out.println("==============");
 		}
 		doAfter();
