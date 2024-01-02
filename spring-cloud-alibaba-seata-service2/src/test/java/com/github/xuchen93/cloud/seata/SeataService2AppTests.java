@@ -7,21 +7,23 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.sql.DataSource;
+import java.util.List;
+
 @SpringBootTest
 class SeataService2AppTests {
 
 	@Autowired
-	SeataT2Service service;
+	List<DataSource> list;
 
 	@SneakyThrows
 	@Test
 	void contextLoads() {
-//		service.save(new SeataT2());
-		service.save(new SeataT2(){{
-			setIntV1(5);
-			setVarV1("var1111");
-		}});
-
+		list.forEach(i->{
+			System.out.println(i.getClass());
+			System.out.println(i);
+			System.out.println("---------");
+		});
 	}
 
 }

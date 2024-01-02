@@ -1,6 +1,7 @@
 package com.github.xuchen93.cloud.seata.service;
 
 import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.thread.ThreadUtil;
 import com.github.xuchen93.cloud.seata.entity.SeataT2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ public class Busi2Service {
     SeataT2Service seataT2Service;
 
     public void success(){
+        ThreadUtil.sleep(1000);
         seataT2Service.save(new SeataT2(){{
             setVarV1(DateUtil.now()+"success");
             setIntV1(1);

@@ -51,3 +51,8 @@ seata:
     rm:
       report-success-enable: true
       report-retry-count: 5
+#org.springframework.cloud.netflix.ribbon.RibbonClientConfiguration.ribbonClientConfig
+#默认值1000，很多懒加载bean，会导致第一次必失败
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
