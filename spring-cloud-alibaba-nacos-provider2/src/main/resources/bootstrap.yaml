@@ -4,8 +4,7 @@ spring:
       discovery:
         server-addr: 124.220.50.39:8848
         namespace: cloud-demo
-        cluster-name: ${spring.application.name}
   application:
     name: nacos-provider
 server:
-  port: 9090
+  port: 9091

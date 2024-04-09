@@ -1,10 +1,14 @@
+server:
+  port: 8081
 spring:
+  application:
+    name: nacos-config
   cloud:
     nacos:
       config:
         server-addr: 124.220.50.39:8848
+        namespace: cloud-demo
         file-extension: yaml
-  application:
-    name: spring-cloud-alibaba-nacos-config
-server:
-  port: 8081
+        shared-configs:
+          - data-id: shared-config
+            refresh: true

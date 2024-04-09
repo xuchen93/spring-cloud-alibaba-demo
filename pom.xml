@@ -21,7 +21,9 @@
     <modules>
         <module>spring-cloud-alibaba-base</module>
         <module>spring-cloud-alibaba-nacos-config</module>
+        <module>spring-cloud-alibaba-nacos-gateway</module>
         <module>spring-cloud-alibaba-nacos-provider</module>
+        <module>spring-cloud-alibaba-nacos-provider2</module>
         <module>spring-cloud-alibaba-nacos-consumer</module>
         <module>spring-cloud-alibaba-sentinel</module>
         <module>spring-cloud-alibaba-seata-service1</module>

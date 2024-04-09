@@ -18,12 +18,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/config")
 public class ConfigController {
 
-	@Value("${xuchen.config.key1:}")
+	@Value("${xuchen.config.key1}")
 	String key1;
+
+	@Value("${xuchen.config.key2}")
+	String key2;
 
 	@GetMapping("/key")
 	public R<String> queryKey() {
 		log.info(key1);
 		return R.success(key1);
+	}
+
+	@GetMapping("/key2")
+	public R<String> queryKe2y() {
+		log.info(key2);
+		return R.success(key2);
 	}
 }

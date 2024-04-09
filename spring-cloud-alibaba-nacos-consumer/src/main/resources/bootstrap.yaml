@@ -3,8 +3,8 @@ spring:
     nacos:
       discovery:
         server-addr: 124.220.50.39:8848
-        cluster-name: consumer1
+        namespace: cloud-demo
   application:
-    name: spring-cloud-alibaba-nacos-consumer
+    name: nacos-consumer
 server:
   port: 9080
