@@ -5,7 +5,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-@FeignClient(name = "spring-cloud-alibaba-seata-service2")
+@FeignClient(name = "seata-service2")
 public interface Service2Remote {
 
 

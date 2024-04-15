@@ -11,7 +11,7 @@ public class TransactionalHttpTest {
         HttpPackUtil.setPort(9100);
 //        System.out.println(HttpPackUtil.createPost("success").execute().body());
 //        System.out.println(HttpPackUtil.createGet("test").execute().body());
-        System.out.println(HttpPackUtil.createPost("fail1").execute().body());
-//        System.out.println(HttpPackUtil.createGet("fail2").execute().body());
+//        System.out.println(HttpPackUtil.createPost("fail1").execute().body());
+        System.out.println(HttpPackUtil.createPost("fail2").execute().body());
     }
 }

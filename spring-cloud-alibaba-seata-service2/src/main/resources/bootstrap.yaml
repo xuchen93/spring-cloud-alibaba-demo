@@ -1,12 +1,16 @@
 spring:
   application:
-    name: spring-cloud-alibaba-seata-service2
+    name: seata-service2
   cloud:
     nacos:
       discovery:
         group: SEATA_GROUP
         server-addr: 124.220.50.39:8848
-        namespace: 426b74f2-7284-4d25-8828-0cc75e3013c2
+        namespace: cloud-demo
+        metadata:
+          preserved.heart.beat.interval: 1000 #该实例在客户端上报心跳的间隔时间。（单位:毫秒）
+          preserved.heart.beat.timeout: 1000 #该实例在不发送心跳后，从健康到不健康的时间。（单位:毫秒）
+          preserved.ip.delete.timeout: 1000 #该实例在不发送心跳后，被nacos下掉该实例的时间。（单位:毫秒）
   jackson:
     time-zone: GMT+8
   jpa:

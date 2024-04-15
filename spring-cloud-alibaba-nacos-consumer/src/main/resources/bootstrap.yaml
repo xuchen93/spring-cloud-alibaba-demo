@@ -6,5 +6,8 @@ spring:
         namespace: cloud-demo
   application:
     name: nacos-consumer
+feign:
+  hystrix:
+    enabled: true
 server:
   port: 9080
